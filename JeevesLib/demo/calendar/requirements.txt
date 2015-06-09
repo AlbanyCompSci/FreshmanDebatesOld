@@ -1,4 +1,0 @@
-macropy
-nose
-django
-mock
