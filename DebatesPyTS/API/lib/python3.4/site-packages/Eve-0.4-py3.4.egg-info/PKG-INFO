@@ -1,0 +1,128 @@
+Metadata-Version: 1.1
+Name: Eve
+Version: 0.4
+Summary: REST API framework powered by Flask, MongoDB and good intentions.
+Home-page: http://python-eve.org
+Author: Nicola Iarocci
+Author-email: eve@nicolaiarocci.com
+License: Copyright (c) 2014 by Nicola Iarocci and contributors.  See AUTHORS
+for more details.
+
+Some rights reserved.
+
+Redistribution and use in source and binary forms of the software as well
+as documentation, with or without modification, are permitted provided
+that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above
+  copyright notice, this list of conditions and the following
+  disclaimer in the documentation and/or other materials provided
+  with the distribution.
+
+* The names of the contributors may not be used to endorse or
+  promote products derived from this software without specific
+  prior written permission.
+
+THIS SOFTWARE AND DOCUMENTATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE AND DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+
+Description: Eve
+        ====
+        .. image:: https://secure.travis-ci.org/nicolaiarocci/eve.png?branch=master 
+                :target: https://secure.travis-ci.org/nicolaiarocci/eve
+        
+        Eve is an out-of-the-box, highly customizable and fully featured RESTful Web
+        API framework that you can use to effortlessly build and deploy your own APIs
+        
+        Eve is Simple
+        -------------
+        .. code-block:: python
+        
+            from eve import Eve
+        
+            app = Eve()
+            app.run()
+        
+        The API is now live, ready to be consumed:
+        
+        .. code-block:: console
+        
+            $ curl -i http://example.com/people
+            HTTP/1.1 200 OK
+        
+        All you need to bring your API online is a database, a configuration file
+        (defaults to ``settings.py``) and a launch script.  Overall, you will find that
+        configuring and fine-tuning your API is a very simple process.
+        
+        Eve is thoroughly tested under Python 2.6, Python 2.7 and Python 3.3.
+        
+        `Check out the Eve Website <http://python-eve.org/>`_
+        
+        Features
+        --------
+        * Emphasis on REST
+        * Full range of CRUD operations
+        * Customizable resource endpoints
+        * Customizable, multiple item endpoints
+        * Filtering and Sorting
+        * Pagination
+        * HATEOAS
+        * JSON and XML Rendering
+        * Conditional Requests
+        * Data Integrity and Concurrency Control
+        * Bulk Inserts
+        * Data Validation
+        * Extensible Data Validation
+        * Resource-level Cache Control
+        * Versioning
+        * CORS Cross-Origin Resource Sharing
+        * Read-only by default
+        * Default Values
+        * Predefined Database Filters
+        * Projections
+        * Embedded Resource Serialization
+        * Event Hooks
+        * Rate Limiting
+        * File Storage
+        * Custom ID Fields
+        * MongoDB Support
+        * Powered by Flask
+        
+        
+        License
+        -------
+        Eve is a `Nicola Iarocci`_ and `Gestionali Amica`_ open source project,
+        distributed under the `BSD license
+        <https://github.com/nicolaiarocci/eve/blob/master/LICENSE>`_. 
+        
+        .. _`Nicola Iarocci`: http://nicolaiarocci.com
+        .. _`Gestionali Amica`: http://gestionaleamica.com
+        .. _WIP: http://blog.python-eve.org/sqlalchemy-and-eve
+        
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content

@@ -1,0 +1,16 @@
+<title>Grading</title>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+<center>
+    <h1>Join {{ school_class.name }}?</h1>
+
+    {% if failed %}
+        <p>Sorry, try again.</p>
+    {% endif %}
+
+    <form action="." method="post" class="pure-form">
+        {% csrf_token %}
+        <input type="text" name="class_pwd" placeholder="Password">
+        <input type="submit" value="Join!" class="pure-button pure-button-primary"></input>
+    </form>
+</center>

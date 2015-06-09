@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{% block head %}
+    
+{% endblock head %}
+{% block content %}
+    {%if not user.is_staff%}
+        <h1>{{class.name}} <button onclick="window.location.href='/class/removeself/{{class.uid}}/'">Leave Class</button></h1>
+    {%else%}
+        <h1>{{class.name}}</h1>
+    {%endif%}
+    <h2>Description:</h2>
+    <p>
+        {{class.description}}
+    </p>
+    <h3>Teachers:</h3>
+    <p>
+        <ul>
+            <li><em>{{class.creator.get_full_name}} ({{class.creator.username}})</em></li>
+            {%for teacher in class.teachers.all%}
+                <li>{{teacher.get_full_name}} ({{teacher.username}})</li>
+            {%endfor%}
+        </ul>
+    </p>
+    <p>
+        <h3>Students:</h3>
+        <ul>
+            {%for student in class.students.all%}
+                <li>{{student.get_full_name}} ({{student.username}})</li>
+            {%endfor%}
+        </ul>
+    </p>
+{% endblock content %}

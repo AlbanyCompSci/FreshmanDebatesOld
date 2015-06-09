@@ -1,0 +1,42 @@
+log_level: debug
+
+# The port sproxy listens on (this is always HTTPS).
+listen: 443
+
+# If 'yes', sproxy will open port 80 and redirect HTTP requests to
+# HTTPS (port 443)
+redirect_http_to_https: yes
+
+cookie_domain: dev.zalora.com
+cookie_name: sproxy-dev
+
+# The client ID and client secret come from Google's "Cloud Console".
+client_id: 49069276928-mtbsbfhar859bkicu2h3elqdbnrellvt.apps.googleusercontent.com
+client_secret: config/client_secret
+
+# The auth token key should have a minimum of 160 bits of randomness.
+# `openssl rand -base64 160` is a good candidate
+auth_token_key: config/auth_token_key
+
+ssl_key: config/server.key.example
+
+# Include extra (intermediate) certs in a single file. Make sure that they're sorted from server downward, i.e.:
+# -----BEGIN CERTIFICATE-----
+#    (server certificate)
+# -----END CERTIFICATE-----
+# -----BEGIN CERTIFICATE-----
+#  (intermediate certificate)
+# -----END CERTIFICATE-----
+# -----BEGIN CERTIFICATE-----
+#  (optional CA certificate)
+# -----END CERTIFICATE-----
+ssl_certs: config/server.crt.example
+
+# PostgreSQL database (connection string)
+database: "user=sproxy dbname=sproxy"
+
+# To initialize/populate the DB, see sproxy.sql.
+
+# Which backend should sproxy relay the requests to?
+backend_address: "127.0.0.1"
+backend_port: 8000

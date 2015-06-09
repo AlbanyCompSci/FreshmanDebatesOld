@@ -1,0 +1,17 @@
+{
+    "name": "ahs-freshman-renewal",
+    "version": "0.0.1",
+    "description": "Administration and scoring website for the Albany High School Freshman Renewal Debates",
+    "main": "js/index.js",
+    "dependencies": {
+        "flux"            : "*",
+        "react"           : "*",
+        "firebase"        : "*",
+        "reactfire"       : "*",
+        "react-bootstrap" : "*"
+    },
+    "devDependencies": {
+        "browserify": "*"
+    },
+    "author": "David Harrison"
+}

@@ -1,0 +1,13 @@
+{
+  "firebase": "ahs-freshman-renewal",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**",
+    "main.jsx",
+    "react-0.12.2",
+    "README.md",
+    "Makefile"
+  ]
+}

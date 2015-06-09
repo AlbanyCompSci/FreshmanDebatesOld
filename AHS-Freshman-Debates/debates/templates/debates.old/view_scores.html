@@ -1,0 +1,29 @@
+{% extends "debates/base.html" %}
+
+{% block content %}
+<!-- Need to find a way to grab teams and create the same amount of divs as teams. -->
+<div id="Team">
+    <!-- Find a way to collapse scores so teacher can view either one team at a time or all-->
+    <!-- Replace is_aff boolean with Affirmative/Negative -->
+    <h3>"Team {{ team.team_number }}: {{ team.topic }}, {{ team.is_aff }}"</h3>
+	    </h1>"Date and Location"</h1>	
+	    <div id="ScoreBox">
+        <ul>
+            <li>Speaker 1 ({{ team.speaker1.first_name }} {{ team.speaker1.last_name }})
+            <br>Average: {{ score.speaker1|floatformat:2 }}
+            <li>Speaker 2 ({{ team.speaker2.first_name }} {{ team.speaker2.last_name }})
+            <br>Average: {{ score.speaker2|floatformat:2 }}
+            <li>Cross Examination: ({{ team.cross_examiner.first_name }} {{ team.cross_examiner.last_name }})
+            <br>Average: {{ score.cross_examination|floatformat:2 }}
+            <li>Rebuttal ({{ team.rebutter.first_name }} {{ team.rebutter.last_name }})
+            <li>Slideshow ({{ team.slideshow_presenter.first_name }} {{ team.slideshow_presenter.last_name }})
+            <br>Average: {{ score.slideshow|floatformat:2 }}
+            <br>Average: {{ score.rebuttal|floatformat:2 }}
+            <li>Group Argument Average: {{ score.argument|floatformat:2 }}
+        <ul>
+		    <h5>
+            Total Score Average: {{ average_score }}
+		    </h5>
+	    </div>
+</div>
+{% endblock %}

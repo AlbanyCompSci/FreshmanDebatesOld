@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<title>AHS Debates</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}DebateSite.css">
+    {% block head_scripts %}{% endblock %}
+</head>
+<body>
+	<div class="Banner">
+		Albany High School Freshman Debates
+        {% if logged_in %}
+        <!-- display login name and logout button -->
+        {% else %}
+        <div id="signinButton">
+            <span class="g-signin" data-scope="{{ plus_scope }}"
+                                   data-clientid="{{ plus_id }}"
+                                   data-redirecturi="postmessage"
+                                   data-accesstype="offline"
+                                   data-cookiepolicy="single_host_origin"
+                                   data-callback="signInCallback">
+            </span>
+        </div>
+        {% endif %}
+	</div>
+    <script type="text/javascript">
+        (function () {
+            var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+    <script type="text/javascript">
+        var signInCallback = function (result) {
+            if (result['error']) {
+                alert('An error happened:', result['error']);
+            } else {
+                $('#code').attr('value', result['code']);
+                $('#at').attr('value', result['access_token']);
+                $('#google-plus').submit();
+            }
+        };
+    </script>
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

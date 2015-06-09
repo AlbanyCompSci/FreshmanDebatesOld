@@ -1,0 +1,60 @@
+{% extends "debates/base.html" %}
+
+{% block head_scripts %}
+<script type="text/javascript">
+jQuery(function() {
+    var form = jQuery("#form")
+    console.log (form_affirmative)
+    form_affirmative.submit(function(e){
+        //jQuery("#sendbutton").attr('disabled', true)
+        jQuery("#sendwrapper").prepend('<span>Sending message, please wait... </span>')
+        jQuery("#ajaxwrapper").load(
+            form_affirmative.attr('action') + ' #ajaxwrapper',
+            form_affirmative.serializeArray(),
+            function(responseText, responseStatus) {
+                jQuery("#sendbutton").attr('disabled', false)
+            }
+
+        );
+        e.preventDefault();
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="Boxes">
+    <div id="AffirmativeNegativeDiv">
+        <div id="ScoreBox">
+            <h1>Create a Team</h1>
+                <form method='post' id="form">
+                <div id="ajaxwrapper">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Debate Topic: <input id="color" list="topics" />
+                        <li>Team Number:         {{ form.team_number }}
+                        <li>Team Name:           {{ form.team_name }}
+                        <li>Slideshow Presenter: <input id="color" list="debaters" />
+                        <li>First Speaker: <input id="color" list="debaters" />
+                        <li>Second Speaker: <input id="color" list="debaters" />
+                        <li>Cross Examiner: <input id="color" list="debaters" />
+                        <li>Rebutter: <input id="color" list="debaters" />
+                        <datalist id="topics">
+                            {% for topic in topics %}
+                            <option value="{{ topic.name }}">
+                            {% endfor %}
+                        </datalist>
+                        <datalist id="debaters">
+                            {% for debater in debaters %}
+                            <option value="{{ debater.first_name }} {{ debater.last_name }}">
+                            {% endfor %}
+                        </datalist>
+                    <p id="sendwrapper"><input type='submit' value='Submit Team'/></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

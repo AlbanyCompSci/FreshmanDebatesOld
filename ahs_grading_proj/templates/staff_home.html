@@ -1,0 +1,113 @@
+{%extends 'base.html'%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="/static/css/tables.css"/>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".lesson").hover(function(){
+        $($($(this).children(".name")).children(".display").children(".icon")).show();
+    },
+    function(){
+        $($($(this).children(".name")).children(".display").children(".icon")).hide();
+    });
+    $(".lesson a").click(function(){
+        var url = $(this).attr("href");
+        window.location.href = url;
+        return false;
+    });
+    $(".lesson").bind('click', getUsers);
+    $(".lesson").click(function(){
+        $($($(this).children(".name")).children(".details")).slideToggle(200);        
+    });
+    $(".icon").click(function(){
+        var url = $(this).attr("data-link");
+        window.location.href = url;
+        return false;
+    });
+});
+var getUsers = function(){
+    var url = $(this).find(".stu_responses").attr("data-link");
+    var wrapper = $(this).find(".stu_responses");
+    wrapper.html("");
+    var cmp_span = $(this).find(".completed");
+    $.getJSON(url,function(data){
+        var completed = data.completed;
+        var incomplete = data.working;
+        var seen = data.seen;
+        for(x in incomplete){
+            wrapper.append("<span class='error'>"+incomplete[x].first+" "+incomplete[x].last+" ("+incomplete[x].username+"), </span>");
+        }
+        for(x in seen){
+            wrapper.append("<span class='seen'>"+seen[x].first+" "+seen[x].last+" ("+seen[x].username+"), </span>");
+        }
+        for(x in completed){
+            wrapper.append("<span class='valid'>"+ completed[x].first+" "+completed[x].last+" ("+completed[x].username+"), </span>");
+        }
+        cmp_span.html(completed.length+"/"+(completed.length+incomplete.length));
+    });
+    $(this).unbind('click', getUsers);
+};
+</script>
+<style type="text/css">
+.details{
+    display:none;
+    margin-left:2em;
+    font-size: .8em;
+    padding:10px 0px;
+}
+.details p{
+    padding:0;
+    margin:0;
+    color:black;
+}
+.details td{    
+    background:linear-gradient(#FFFFE0, #FFFEBD);
+}
+.display{
+    padding:10px 0px;
+    height:18px;
+}
+.seen{
+    color:blue;
+}
+</style>
+{%endblock%}
+{%block content%}
+    <h1>My Lessons <button onclick="window.location.href='/lesson/add/'"><img height="12px" src="/static/images/add.png"/> Add Lesson</button></h1>
+    <table id="current-lessons">
+        <thead>
+            <tr>
+                <th>Lesson Name</th>
+                <th class="creator">Creator</th>
+            </tr>
+        </thead>
+        {% for l in lessons %}
+            <tr class="lesson">
+                <td class="name">
+                    <div class="display">
+                        <a title="View {{l.lesson.name}} Responses" href="{{l.lesson.get_response_url}}1/">{{l.lesson}}</a> 
+                        <img title="Edit Lesson" data-link="{{l.lesson.get_edit_url}}" class="icon" src="/static/images/edit.png"/>
+                        <img class="icon" title="View Lesson" src="/static/images/view.png" data-link="{{l.lesson.get_view_url}}"/>
+                    </div>
+                    <div class="details">
+                        <p>
+                            <strong>Url (Right click, copy, email):</strong> <a href="{{l.lesson.get_view_url}}">{{l.lesson.get_view_url}}</a>
+                        </p>
+                        <p>
+                            <strong>Last Edit:</strong> {{l.lesson.last_edit_date}}
+                        </p>
+                        <p>
+                            <strong>Completed: </strong> <span class="completed"></span>
+                        </p>
+                        <p>
+                            <strong>Response Recieved:</strong>
+                            <span class="stu_responses" data-link="{{l.lesson.get_stu_url}}"><img src="/static/images/loader.gif" alt="Loading..."/></span>
+                        </p>
+                    </div>
+                </td>
+                <td class="creator">{{l.creator.get_full_name}}</td>
+                <!--<td class="complete">{{l.num_complete}}/{{l.num_users}}</td>-->
+            </tr>
+           
+        {% endfor %}
+    </table>
+{%endblock%}

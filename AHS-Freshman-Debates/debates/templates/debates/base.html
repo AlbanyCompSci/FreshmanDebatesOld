@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+    <title>AHS Freshman Debates</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}base.css">
+    <link rel="icon" type="image/x-icon" href="http://ahs.ausdk12.org/_/rsrc/1294503617031/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="http://ahs.ausdk12.org/_/rsrc/1294503617031/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.gstatic.com/sites/p/585ee1/system/app/images/apple-touch-icon.png">
+    <meta name="title" content="AHS Freshman Debates">
+    <meta name="description" content="Albany High School Freshman Renewal Debates">
+    {% block head_scripts %}{% endblock %}
+</head>
+<body class="">
+    <div id="navbar" class="nb-home">
+        <div id="navbarlogo">
+            <h1><a href="/home" title="Go to the home page">AHS Freshman Debates</a></h1>
+        </div>
+        <div id="navbarmenu">
+            <ul id="navbarlist">
+                <li id="nb-entry"><a href="/" title="AHS Freshman Renewal Debates">Home</a></li>
+                {% for group in user.groups.all %}
+                {% if group.name == 'admins' %}
+                <li id="nb-entry"><a href="/admin" title="Admin Page">Admin</a></li>
+                {% endif %}
+                {% if group.name == 'teachers' %}
+                <li id="nb-entry"><a href="/teacher" title="Teacher Menu">Teacher</a></li>
+                {% endif %}
+                {% if group.name == 'judges' %}
+                <li id="nb-entry"><a href="/judge" title="Judge Menu">Judge</a></li>
+                {% endif %}
+                {% if group.name == 'debaters' %}
+                <li id="nb-entry"><a href="/debater" title="Debater Menu">Debater</a></li>
+                {% endif %} {% endfor %}
+            </ul>
+        </div>
+        <div id="user-login">
+            {% if user.is_authenticated %}
+            <h3>
+                {{ user.first_name }} {{ user.last_name }} <br>
+                <a href="/logout">Logout</a>
+            </h3>
+            {% else %}
+            <form id="google-plus" method="post" action="{% url 'social:complete' 'google-plus' %}">
+                {% csrf_token %}
+                <input id="at" type="hidden" name="access_token" value="" />
+                <input id="code" type="hidden" name="code" value="" />
+                <div id="signinButton">
+                    <span class="g-signin" scope="{{ plus_scope }}"
+                                           clientid="{{ plus_id }}"
+                                           redirecturi="postmessage"
+                                           accesstype="offline"
+                                           cookiepolicy="single_host_origin"
+                                           callback="signInCallback">
+                    </span>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            (function () {
+                var po = document.createElement('script');
+                po.type = 'text/javascript';
+                po.async = true;
+                po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+        <script type="text/javascript">
+            var signInCallback = function (result) {
+                //immeadiate_failed indicates that the user has not yet logged in
+                if (result['error'] == 'immediate_failed') {
+                    //do nothing, immeadiate_failed indicates that the user is not logged in
+                } else if (result['error']) {
+                    alert('An error happened:'.concat(result['error']));
+                } else {
+                    $('#code').attr('value', result['code']);
+                    $('#at').attr('value', result['access_token']);
+                    $('#google-plus').submit();
+                }
+            };
+        </script>
+    </div>
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

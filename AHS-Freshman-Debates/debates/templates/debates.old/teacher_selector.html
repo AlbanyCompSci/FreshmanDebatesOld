@@ -1,0 +1,47 @@
+{% extends "debates/base.html" %}
+
+{% block content %}
+<div id="MainBody">
+    <div id="NewDebateTeam" class="Button">
+        <h1>Create Team</h1>
+        <br>
+    </div>
+    <div id="DebateScores" class="Button">
+        <h1>View Scores</h1>
+        <br>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+    var something = document.getElementById('NewDebateTeam');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('team_create','_self',false)
+    };
+
+    var something = document.getElementById('DebateScores');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('view_scores','_self',false)
+    };
+
+    var something = document.getElementById('SelectJ');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('debate_selector','_self',false)
+    };
+
+    var something = document.getElementById('LogIn');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('login','_self',false)
+    };
+</script>
+{% endblock %}

@@ -1,0 +1,134 @@
+Elm.Website = Elm.Website || {};
+Elm.Website.Skeleton = Elm.Website.Skeleton || {};
+Elm.Website.Skeleton.make = function (_elm) {
+   "use strict";
+   _elm.Website = _elm.Website || {};
+   _elm.Website.Skeleton = _elm.Website.Skeleton || {};
+   if (_elm.Website.Skeleton.values)
+   return _elm.Website.Skeleton.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   _P = _N.Ports.make(_elm),
+   $moduleName = "Website.Skeleton",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Graphics$Element = Elm.Graphics.Element.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Text = Elm.Text.make(_elm),
+   $Window = Elm.Window.make(_elm);
+   var groupToText = function (g) {
+      return $Text.fromString(function () {
+         switch (g.ctor)
+         {case "Debaters":
+            return "Debaters";
+            case "Debates":
+            return "Debates";
+            case "Judges": return "Judges";
+            case "Teachers":
+            return "Teachers";
+            case "Teams": return "Teams";}
+         _U.badCase($moduleName,
+         "between lines 45 and 50");
+      }());
+   };
+   var highlightIf = F2(function (pred,
+   x) {
+      return $Text.centered(pred(x) ? $Text.bold(groupToText(x)) : groupToText(x));
+   });
+   var logo = A3($Graphics$Element.container,
+   93,
+   80,
+   $Graphics$Element.middle)(A3($Graphics$Element.image,
+   93,
+   74,
+   "AHSCougar.png"));
+   var View = F2(function (a,b) {
+      return {_: {}
+             ,content: b
+             ,group: a};
+   });
+   var Debates = {ctor: "Debates"};
+   var Teams = {ctor: "Teams"};
+   var Teachers = {ctor: "Teachers"};
+   var Judges = {ctor: "Judges"};
+   var Debaters = {ctor: "Debaters"};
+   var view = $Signal.constant({_: {}
+                               ,content: $Basics.always($Graphics$Element.empty)
+                               ,group: Debaters});
+   var groups = _L.fromArray([Debaters
+                             ,Judges
+                             ,Teachers
+                             ,Teams
+                             ,Debates]);
+   var navBar = F2(function (_v1,
+   i) {
+      return function () {
+         switch (_v1.ctor)
+         {case "_Tuple2":
+            return function () {
+                 var groupList = A3($List.foldl,
+                 F2(function (x,z) {
+                    return A2($List._op["::"],
+                    A3($Graphics$Element.container,
+                    93,
+                    80,
+                    $Graphics$Element.middle)(A2(highlightIf,
+                    F2(function (x,y) {
+                       return _U.eq(x,y);
+                    })(i),
+                    x)),
+                    z);
+                 }),
+                 _L.fromArray([]),
+                 groups);
+                 return $Graphics$Element.color(A3($Color.rgb,
+                 180,
+                 180,
+                 180))($Graphics$Element.height(80)($Graphics$Element.width(_v1._0)(A2($Graphics$Element.flow,
+                 $Graphics$Element.right,
+                 A2($List._op["::"],
+                 logo,
+                 A2($List._op["::"],
+                 A2($Graphics$Element.spacer,
+                 20,
+                 80),
+                 groupList))))));
+              }();}
+         _U.badCase($moduleName,
+         "between lines 34 and 35");
+      }();
+   });
+   var render = F2(function (dim,
+   v) {
+      return A2($Graphics$Element.flow,
+      $Graphics$Element.down,
+      _L.fromArray([A2(navBar,
+                   dim,
+                   v.group)
+                   ,v.content(dim)]));
+   });
+   var main = A2($Signal._op["~"],
+   A2($Signal._op["<~"],
+   render,
+   $Window.dimensions),
+   view);
+   _elm.Website.Skeleton.values = {_op: _op
+                                  ,Debaters: Debaters
+                                  ,Judges: Judges
+                                  ,Teachers: Teachers
+                                  ,Teams: Teams
+                                  ,Debates: Debates
+                                  ,View: View
+                                  ,main: main
+                                  ,view: view
+                                  ,render: render
+                                  ,navBar: navBar
+                                  ,logo: logo
+                                  ,highlightIf: highlightIf
+                                  ,groupToText: groupToText
+                                  ,groups: groups};
+   return _elm.Website.Skeleton.values;
+};

@@ -1,0 +1,10 @@
+Django==1.5.1
+MarkupSafe==0.15
+argparse==1.2.1
+django-social-auth==0.7.23
+ipdb==0.7
+ipython==1.0.0
+oauth==1.0.1
+oauth2==1.5.211
+simplejson==2.3.2
+python-openid

@@ -1,0 +1,102 @@
+﻿{{ comment }}
+	This page shows all transactions a covered entity has with other
+	covered entities. Each transaction contains shard data, that is the information
+	that was needed to complete the transaction standard. Every transaction should
+	have a standard. (I think.)
+{{ endcomment }}
+<html><body>
+{% extends "base.html" %}
+{% block title %}
+	Transactions
+{% endblock %}
+
+{% block top %}
+	<h2>
+		History of data transactions by the entity.
+	</h2>
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="page-header">
+			<h2>
+				{{ entity.Name }}
+			</h2>
+		</div>
+		<ul class="nav nav-tabs" data-tabs="tabs">
+			<li>
+				<a href=".">
+					Directory
+				</a>
+			</li>
+			<li class="active">
+				<a href="transactions">
+					Transactions
+				</a>
+			</li>
+			<li>
+				<a href="associates">
+					Business Associates
+				</a>
+			</li>
+		</ul>
+		<br>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<td>
+						Standard {% include "invisible.html" %}
+					</td>
+					<td>
+						Other Entity {% include "invisible.html" %}
+					</td>
+					<td>
+						Information Shared {% include "invisible.html" %}
+					</td>
+					<td>
+						Date Requested {% include "invisible.html" %}
+					</td>
+					<td>
+						Date Responded {% include "invisible.html" %}
+					</td>
+					<td>
+						Purpose {% include "invisible.html" %}
+					</td>
+				</tr>
+			</thead>
+      {% for transaction in concretize(transactions)|list + concretize(other_transactions)|list %}
+			<tr>
+				<td>
+					{{ transaction.Standard }}
+				</td>
+				<td>
+					{% if transaction.SecondParty == entity %}
+					<a href='{{ url("entity", transaction.FirstParty.EIN) }}'>
+						{{ transaction.FirstParty.Name }}
+					</a>
+					{% else %}
+					<a href='{{ url("entity", transaction.SecondParty.EIN) }}'>
+						{{ transaction.SecondParty.Name }}
+					</a>
+					{% endif %}
+				</td>
+				<td>
+					{% with data=transaction.SharedInformation %}
+					<a href="#myModal{{ loop.index }}" data-toggle="modal">&hellip;</a>
+					{% include "informationModal.html" %}
+					{% endwith %}
+				</td>
+				<td>
+					{{ transaction.DateRequested }}
+				</td>
+				<td>
+					{{ transaction.DateResponded }}
+				</td>
+				<td>
+					{{ transaction.Purpose }}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+</body></html>

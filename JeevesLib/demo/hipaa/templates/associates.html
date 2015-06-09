@@ -1,0 +1,86 @@
+﻿{{ comment }}
+	This page is for showing the business associates
+	that an entity has an agreement with. If an associate is also a covered
+	entity, it has a link to more information regarding it. Each agreement with
+	a busines associate has information that the entity and business associate
+	share so the business associate can fulfill the agreement.
+	If information access is restricted to the accessor, the information
+	shared cell can contain the reason the information is being restricted.
+{{ endcomment }}
+{% extends "base.html" %}
+
+{% block title %}
+	Business Associates
+{% endblock %}
+
+{% block top %}
+	<h2>
+		Businesses this entity shared private health information with.
+	</h2>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="page-header">
+			<h2>
+				{{ entity.Name }}
+			</h2>
+		</div>
+		<ul class="nav nav-tabs" data-tabs="tabs">
+			<li>
+				<a href=".">
+					Directory
+				</a>
+			</li>
+			<li>
+				<a href="transactions">
+					Transactions
+				</a>
+			</li>
+			<li class="active">
+				<a href="associates">
+					Business Associates
+				</a>
+			</li>
+		</ul>
+		<br>
+		<table class="table table-striped table-hover">
+			<thead>
+                <tr>
+                    <td>
+                        Entity {% include "invisible.html" %}
+                    </td>
+                    <td>
+                        Information Shared {% include "invisible.html" %}
+                    </td>
+                    <td>
+                        Purpose {% include "invisible.html" %}
+                    </td>
+                </tr>
+			</thead>
+      {% for associate in concretize(associates) %}
+				    <tr>
+					    <td>
+						    {% if association.BusinessAssociate.Covered %}
+                            <a href='{{ url("entity", 3) }}'>
+                                {{ association.BusinessAssociate.Name }}
+                            </a>
+						    {% else %}
+							    {{ association.BusinessAssociate.Name }}
+						    {% endif %}
+					    </td>
+					    <td>
+                            {% with data=association.SharedInformation %}
+                            <a href="#myModal{{ loop.index }}" data-toggle="modal">&hellip;</a>
+                            {% include "informationModal.html" %}
+                            {% endwith %}
+					    </td>
+					    <td>
+						    {{ association.Purpose }}
+					    </td>
+
+				    </tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "debates/base.html" %}
+
+{% block content %}
+<div id="MainBody">
+    <div id="SelectT" class="Button">
+        <h1>Teachers</h1>
+    </div>
+    <div id="SelectA" class="Button">
+        <h1>Administrator</h1>
+    </div>
+    <div id="SelectJ" class="Button">
+        <h1>Judges</h1>
+    </div>
+</div>
+{% endblock %}
+
+	
+{% block scripts %}
+<script type="text/javascript">
+	var something = document.getElementById('SelectA');
+
+	something.style.cursor = 'pointer';
+	something.onclick = function() {
+		window.open ('admin','_self',false)
+	};
+
+	var something = document.getElementById('SelectT');
+
+	something.style.cursor = 'pointer';
+	something.onclick = function() {
+		window.open ('teacher_selector','_self',false)
+	};
+
+	var something = document.getElementById('SelectJ');
+
+	something.style.cursor = 'pointer';
+	something.onclick = function() {
+		window.open ('debate_selector','_self',false)
+	};
+
+	var something = document.getElementById('LogIn');
+
+	something.style.cursor = 'pointer';
+	something.onclick = function() {
+		window.open ('LogIn','_self',false)
+	};
+</script>
+{% endblock %}

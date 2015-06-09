@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/static/css/tables.css"/>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".row").hover(function(){
+            $($($(this).children(".name")).children(".display").children(".icon")).show();
+        },
+        function(){
+            $($($(this).children(".name")).children(".display").children(".icon")).hide();
+        });
+        $(".icon").click(function(){
+            var url = $(this).attr("data-link");
+            window.location.href = url;
+            return false;
+        });
+    });
+    </script>
+    <style type="text/css">
+        .row:hover{
+            background: #FFFFCD;
+        }
+        h1 a{
+            font-size: .5em;
+        }
+        .key{
+            width:80px;
+        }
+        .descript{
+            width:350px;
+        }
+    </style>
+{% endblock head %}
+
+{%block content%}
+    <h1>Classes <button onclick="window.location.href='/class/add/'"><img height="12px" src="/static/images/add.png"/> Add Class</button></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Class Name</th>
+                <th>Key</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        {%for c in classes%}
+            <tr class="row">
+                <td class="name">
+                    <div class="display">
+                        <a title="View Class" href="{{c.get_view_url}}">{{c.name}}</a>
+                        {%if user.is_staff%}
+                            <img title="Edit Class" data-link="{{c.get_edit_url}}" class="icon" src="/static/images/edit.png"/>
+                        {%endif%}
+                    </div>
+                </td>
+                <td class="key">{{c.uid}}</td>
+                <td class="descript">{{c.description}}</td>
+            </tr>
+        {%endfor%}
+    </table>
+{%endblock%}

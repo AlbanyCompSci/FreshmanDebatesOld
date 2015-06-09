@@ -1,0 +1,62 @@
+#menu
+{
+	height: 70px!important;
+	padding: 10px 15px!important;
+	background: #333!important;
+	border-bottom: 5px #D00000 solid!important
+}
+
+#logo
+{
+	float: left!important;
+	margin: 0!important;
+	padding: 0!important;
+	height: 70px!important;
+	width: 600px!important;
+	background: url(http://ahs.ausdk12.org/_/rsrc/1294516714712/config/79d29e03a7026c55.png) no-repeat!important
+}
+
+#logo h1
+{
+	margin: 0!important;
+	padding: 0!important;
+	text-indent: -9999px!important
+}
+
+#menuList
+{
+	display: inline!important;
+	/* float: right!important; */
+	list-style: none!important;
+	margin: 0!important;
+	padding: 0!important
+}
+
+#menuList li
+{
+	float: left!important;
+	font-size: 15px!important;
+	font-family: sans-serif!important;
+	line-height: 80px!important;
+	padding-right: 15px!important;
+	padding-left: 15px!important;
+	color: #999;
+	font-weight: bold!important;
+	text-decoration: none!important
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	line-height: 1.4
+}
+
+body
+{
+	min-width: 650px;
+	background: #f6f9fc;
+	color: #222;
+	font: normal 100% sans-serif;
+	text-align: center
+}

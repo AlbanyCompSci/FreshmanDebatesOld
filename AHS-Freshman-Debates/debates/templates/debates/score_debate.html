@@ -1,0 +1,93 @@
+{% extends "debates/base.html" %}
+
+{% block head_scripts %}
+<script type="text/javascript">
+jQuery(function() {
+
+        var form_negative = jQuery("#form_negative")
+        console.log (form_negative)
+        form_negative.submit(function(e){
+            jQuery("#sendbutton_negative").attr('disabled', true)
+            jQuery("#sendwrapper_negative").prepend('<span>Sending message, please wait... </span>')
+            jQuery("#ajaxwrapper_negative").load(
+                form_negative.attr('action') + ' #ajaxwrapper_negative',
+                form_negative.serializeArray(),
+                function(responseText, responseStatus) {
+                    jQuery("#sendbutton_negative").attr('disabled', false)
+                }
+
+            );
+            e.preventDefault();
+        });
+    });
+
+jQuery(function() {
+
+    var form_affirmative = jQuery("#form_affirmative")
+    console.log (form_affirmative)
+    form_affirmative.submit(function(e){
+        jQuery("#sendbutton_affirmative").attr('disabled', true)
+        jQuery("#sendwrapper_affirmative").prepend('<span>Sending message, please wait... </span>')
+        jQuery("#ajaxwrapper_affirmative").load(
+            form_affirmative.attr('action') + ' #ajaxwrapper_affirmative',
+            form_affirmative.serializeArray(),
+            function(responseText, responseStatus) {
+                jQuery("#sendbutton_affirmative").attr('disabled', false)
+            }
+
+        );
+        e.preventDefault();
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="Boxes">
+    <div id="AffirmativeNegativeDiv">
+        <div id="ScoreBox">
+            <h1>Affirmative</h1>
+                <form method='post' id="form_affirmative">
+                <div id="ajaxwrapper_affirmative">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Team Number:       {{ affirmative_form.team_number }}
+                        <li>Speaker 1:         {{ affirmative_form.speaker1 }}
+                        <li>Speaker 2:         {{ affirmative_form.speaker2 }}
+                        <li>Cross Examination: {{ affirmative_form.cross_examination }}
+                        <li>Slideshow:         {{ affirmative_form.slideshow }}
+                        <li>Argument:          {{ affirmative_form.argument }}
+                        <li>Rebuttal:          {{ affirmative_form.rebuttal }}
+                        <li>Notes:             {{ affirmative_form.notes }}
+                    </ul>
+                    <p id="sendwrapper_affirmative"><input type='submit' value='Submit Affirmative' /></p>
+                </div>
+            </form>
+        </div>
+
+        <div id="ScoreBoxNeg">
+            <h1>Negative</h1>
+                <form method='post' id="form_negative">
+                <div id="ajaxwrapper_negative">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Team Number:       {{ negative_form.team_number }}
+                        <li>Speaker 1:         {{ negative_form.speaker1 }}
+                        <li>Speaker 2:         {{ negative_form.speaker2 }}
+                        <li>Cross Examination: {{ negative_form.cross_examination }}
+                        <li>Slideshow:         {{ negative_form.slideshow }}
+                        <li>Argument:          {{ negative_form.argument }}
+                        <li>Rebuttal:          {{ negative_form.rebuttal }}
+                        <li>Notes:             {{ negative_form.notes }}
+                    </ul>
+                    <p id="sendwrapper_negative"><input type='submit' name='form_negative' value='Submit Negative' /></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

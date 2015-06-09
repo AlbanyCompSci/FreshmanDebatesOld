@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{%block topbar%}
+<div id="nav">
+    <a href="javascript:window.history.back()">Back</a>
+    <a href="/home">Return Home</a>
+</div>
+{%endblock%}
+{%block content%}
+<h1>Error 404: Page not found</h1>
+<h3>Path: {{request_path}}</h3>
+{%endblock%}

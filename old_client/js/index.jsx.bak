@@ -1,0 +1,86 @@
+var React = require('react')
+var ReactForms = require('react-forms')
+var Firebase = require('firebase')
+
+var Schema = ReactForms.schema.Schema
+var Property = ReactForms.schema.Property
+var Form = ReactForms.Form
+
+var FIREBASE_ROOT = 'https://ahs-freshman-renewal.firebaseio.com';
+
+var App = React.createClass({
+    componentWillMount: function () {
+        var debatesPlan = {
+            'schema': (
+                <Schema>
+                    <Property
+                        name="title"
+                        required
+                        label="Title"
+                        input=
+            'headers' : ['Title', 'Location', 'Time', 'Judges', 'Affirmative', 'Negative'],
+            'formSchema': /* TODO */
+            'mounts': function () {
+                /* TODO: mounts */
+            },
+        };
+        var teamsPlan = {
+            'headers' : ['Name', 'Teachers', 'Debaters', 'Debate'],
+        };
+        var debatersPlan = {
+            'headers' : ['Name', 'Email', 'Team'],
+        };
+        var judgesPlan = {
+            'headers': ['Name', 'Email', 'Debates'],
+        };
+        var teachersPlan = {
+            'headers' : ['Name', 'Email', 'Teams'],
+        };
+        this.views = {
+            'Debates'      : <TableView plan={debatesPlan} />,
+            'Teams'        : <TableView plan={teamsPlan} />,
+            'Debaters'     : <TableView plan={debatersPlan} />,
+            'Judges'       : <TableView plan={judgesPlan} />,
+            'Teachers'     : <TableView plan={teachersPlan} />,
+            'Score Debate' : <ScoreDebate />
+        };
+    },
+    render: function() {
+        <Menu home={this.home} views={this.views} />
+        {this.state.view}
+    },
+});
+
+var Menu = React.createClass({
+    render: function() {
+        /* TODO: Home Logo */
+        /* TODO: List of Views */
+    },
+});
+
+var TableView = React.createClass({
+    render: function() {
+        <ul class="vert">
+            <li>
+                <ul class="horiz">
+                    {
+                        this.props.schema.headers.map(function(header) {
+                            return (<li>{header}</li>);
+                        });
+                    }
+                </ul>
+            </li>
+            {
+                this.state.items.map(function(item) {
+                    <li>
+                        <Form schema={this.props.schema.itemSchema(item)} />
+                    </li>
+                });
+            }
+            <li>
+                <Form schema={this.props.schema.newSchema} />
+            </li>
+        </ul>
+        <UploadButton schema={this.props.schema} />
+    },
+});

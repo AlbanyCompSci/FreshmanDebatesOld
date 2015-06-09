@@ -1,0 +1,79 @@
+table{
+    width:100%;
+    border-spacing: 0px;    
+}
+table .creator{
+    width:150px;
+    text-align: center;
+}
+table .users, table .completed{
+    width:100px;
+    text-align: center;
+}
+thead th:first-child{
+    -webkit-border-top-left-radius: 10px;    
+    -moz-border-radius-topleft: 10px;    
+    border-top-left-radius: 10px;    
+}
+thead th:last-child{
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+}
+th {
+    font-size: 1.1em;
+    padding:10px;
+    background: #75BF63;
+    background: -moz-linear-gradient(#75BF63, #426339);
+    background: -webkit-linear-gradient(#75BF63, #426339);
+    background: -o-linear-gradient(#75BF63, #426339);
+    background: -ms-linear-gradient(#75BF63, #426339);
+    color: #fff;
+}
+tbody tr:nth-child(even){
+    background: #e8eae9;
+    background: -moz-linear-gradient(#f7faf9, #e8eae9);
+    background: -webkit-linear-gradient(#f7faf9, #e8eae9);
+    background: -o-linear-gradient(#f7faf9, #e8eae9);
+    background: -ms-linear-gradient(#f7faf9, #e8eae9);
+}
+tr a{
+    color:black;
+    text-decoration: none;
+}
+tr td{
+    height:35px;
+}
+tbody tr:hover{
+    background:#FFFFCD !important;
+}
+.lesson:hover{
+    color:blue;
+}
+.display a:hover{
+    color:blue;
+    text-decoration: underline;
+}
+td{
+    padding:0px 10px;
+}
+.pending{
+    color:red;
+    font-weight: bold;
+}
+.done{
+    color:green;
+}
+.icon{
+    opacity: 0.4;
+    cursor: pointer;
+    height:19px;
+    vertical-align: middle;
+    display:none;
+}
+.icon:hover{
+    opacity: 1;
+}
+.orderable{
+    cursor: pointer;        
+}

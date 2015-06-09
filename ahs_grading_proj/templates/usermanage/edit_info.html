@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block head %}
+    <style type="text/css">
+        th{
+            text-align: left;
+        }
+        #content-container{
+            width:500px;
+        }
+        form{
+            margin-left:50px;
+        }
+        table td{
+            padding:2px 5px;
+        }
+        input[type=submit]{
+            float:right;
+        }
+        .error_list{
+            font-size: 0.8em;
+            list-style: none;
+            margin:0;
+            padding: 0;
+        }
+    </style>
+{% endblock head %}
+
+{% block content %}
+    {% if new_user %}
+        <h1>Registration</h1>
+    {% else %}
+        <h1>Edit Account Information</h1>
+    {% endif %}
+    <form method="post" action="/account/info/edit/">
+        <table>
+            <tr>
+                <th>Email:</th>
+                <td>{{user.email}}</td>
+                <td></td>
+            </tr>
+            {%for field in form%}
+                <tr>
+                    <td>{{field.label}}</td>
+                    <td>{{field}}</td>
+                    <td>
+                        <ul class="error error_list">
+                            {% for error in field.errors %}
+                                <li>{{error}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {%endfor%}
+        </table>
+        <input type="hidden" name="next" value="{{next}}"/>
+        <input type="submit" value="Submit"/>
+    </form>
+{% endblock content %}

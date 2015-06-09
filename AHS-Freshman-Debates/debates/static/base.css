@@ -1,0 +1,444 @@
+#navbar
+{
+	height: 70px!important;
+	padding: 10px 15px!important;
+	background: #333!important;
+	border-bottom: 5px #D00000 solid!important
+}
+
+#navbarlogo
+{
+	float: left!important;
+	margin: 0!important;
+	padding: 0!important;
+	height: 70px!important;
+	width: 600px!important;
+	background: url(http://ahs.ausdk12.org/_/rsrc/1294516714712/config/79d29e03a7026c55.png) no-repeat!important
+}
+
+#navbarlogo h1
+{
+	margin: 0!important;
+	padding: 0!important;
+	text-indent: -9999px!important
+}
+
+#navbarlogo a
+{
+	display: block!important;
+	height: 40px!important;
+	width: 190px!important
+}
+
+#navbarlist
+{
+	display: inline!important;
+	/* float: right!important; */
+	list-style: none!important;
+	margin: 0!important;
+	padding: 0!important
+}
+
+#navbarlist li
+{
+	float: left!important;
+	font-size: 15px!important;
+	font-family: sans-serif!important;
+	line-height: 80px!important;
+	padding-right: 15px!important;
+	padding-left: 15px!important
+}
+
+#navbarlist li a
+{
+	color: #999;
+	font-weight: bold!important;
+	text-decoration: none!important
+}
+
+#navbarlist li a:hover
+{
+	color: white!important;
+	text-decoration: underline!important
+}
+
+#user-login
+{
+	float: right!important;
+	line-height: 80px!important;
+	margin: 0!important;
+	padding: 0!important
+}
+
+#user-login h3
+{
+	font-size: 14px!important;
+	font-family: sans-serif!important;
+    font-weight:normal!important;
+    color: #D0D0D0!important;
+	padding-right: 5px!important;
+	padding-left: 5px!important
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	line-height: 1.4
+}
+
+body
+{
+	min-width: 650px;
+	background: #f6f9fc;
+	color: #222;
+	font: normal 100% sans-serif;
+	text-align: center
+}
+
+p
+{
+	margin: .33em 0 1em
+}
+
+ol, ul
+{
+	margin-bottom: 1em;
+	padding-left: 2em
+}
+
+ul
+{
+	list-style: square
+}
+
+code
+{
+	font: 1.2em monospace;
+	background: #ffd;
+	padding: .15em .25em
+}
+
+pre
+{
+	font: 1.2em monospace;
+	border: 1px solid #bdb;
+	background: #dfd;
+	padding: .5em;
+	margin: 1em
+}
+
+pre code
+{
+	display: block;
+	background: none;
+	overflow: auto
+}
+
+blockquote
+{
+	margin: 1.5em 2em
+}
+
+input
+{
+	vertical-align: middle
+}
+
+select[multiple]
+{
+	padding: 1px 0
+}
+
+select[multiple] option
+{
+	padding: 0 .5em 0 .3em
+}
+
+input[type=submit]
+{
+	padding: 0 .6em
+}
+
+.clear
+{
+	clear: both
+}
+
+.hide
+{
+	display: none
+}
+
+hr
+{
+	border: none;
+	border-top: 1px solid #888
+}
+
+img
+{
+	border: 0
+}
+
+#content
+{
+	font-size: .812em
+}
+
+a
+{
+	text-decoration: none
+}
+
+a:link, th a:visited
+{
+	color: #07b
+}
+
+a:visited
+{
+	color: #666
+}
+
+a:hover
+{
+	text-decoration: underline;
+	color: #666
+}
+
+a:active
+{
+	color: #e90
+}
+
+a.headerlink
+{
+	visibility: hidden;
+	padding-left: .5em
+}
+
+h3:hover>a.headerlink
+{
+	visibility: visible
+}
+
+h2
+{
+	font-size: 1.5em;
+	margin-bottom: .5em;
+	border-bottom: 1px solid #888
+}
+
+h3
+{
+	font-size: 1.25em;
+	margin-top: .5em
+}
+
+h4
+{
+	font-size: 1.15em;
+	margin-top: 1em
+}
+
+h5
+{
+	font-size: 1em;
+	margin-top: 1em
+}
+
+#content
+{
+	width: 95%;
+	margin: 0 auto;
+	text-align: left
+}
+
+#content-left-wrapper
+{
+	float: left;
+	width: 100%
+}
+
+#content-left
+{
+	margin: 0 340px 0 0
+}
+
+#content-right
+{
+	float: left;
+	width: 300px;
+	margin-left: -300px
+}
+
+div.box
+{
+	margin-bottom: 1.5em;
+	padding: .65em;
+	background: #ecf2f5;
+	border: 1px solid #bcd
+}
+
+#footer
+{
+	clear: both;
+	margin: 2em 0 1em
+}
+
+#footer p
+{
+	margin: 0;
+	text-align: center;
+	font-size: .85em
+}
+
+div.center, table.center, img.center
+{
+	width: auto;
+	margin-left: auto;
+	margin-right: auto
+}
+
+p.center, td.center, th.center
+{
+	text-align: center
+}
+
+table
+{
+	width: 100%;
+	border-collapse: collapse
+}
+
+table .wrap
+{
+	white-space: normal
+}
+
+th, td
+{
+	white-space: nowrap;
+	text-align: left
+}
+
+th
+{
+	vertical-align: middle;
+	font-weight: bold
+}
+
+td
+{
+	vertical-align: top
+}
+
+table.pretty1
+{
+	width: auto;
+	margin-top: .25em;
+	margin-bottom: .5em;
+	border-collapse: collapse;
+	border: 1px solid #bcd
+}
+
+.pretty1 th
+{
+	padding: .35em;
+	background: #e4eeff;
+	border: 1px solid #bcd
+}
+
+.pretty1 td
+{
+	padding: .35em;
+	border: 1px dotted #bcd
+}
+
+table.pretty2
+{
+	width: auto;
+	margin-top: .25em;
+	margin-bottom: .5em;
+	border-collapse: collapse;
+	border: 1px solid #bbb
+}
+
+.pretty2 th
+{
+	padding: .35em;
+	background: #eee;
+	border: 1px solid #bbb
+}
+
+.pretty2 td
+{
+	padding: .35em;
+	border: 1px dotted #bbb
+}
+
+table.compact
+{
+	width: auto
+}
+
+.compact td
+{
+	padding: .25em 0 .25em 1.5em
+}
+
+dl
+{
+	clear: both
+}
+
+dl dt, dl dd
+{
+	margin-bottom: 4px;
+	padding: 8px 0 4px;
+	font-weight: bold;
+	border-top: 1px dotted #bbb
+}
+
+dl dt
+{
+	color: #333;
+	float: left;
+	padding-right: 15px
+}
+
+form p
+{
+	margin: .5em 0
+}
+
+fieldset
+{
+	border: 0
+}
+
+label
+{
+	width: 12em;
+	vertical-align: top;
+	display: inline-block;
+	font-weight: bold
+}
+
+input[type=text], input[type=password], textarea
+{
+	padding: .10em
+}
+
+form.general-form label, form.general-form .form-help
+{
+	width: 10em;
+	vertical-align: top;
+	display: inline-block
+}
+
+#navbar.nb-entry ul li#nb-entry a
+{
+	color: white!important
+}

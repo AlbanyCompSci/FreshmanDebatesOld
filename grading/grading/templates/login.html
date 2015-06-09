@@ -1,0 +1,54 @@
+{% load socialaccount %}
+<!doctype html>
+<html>
+  <head>
+    <title>Grading</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+    <style>
+      body {
+        background: url('https://farm8.staticflickr.com/7199/6956509317_770512683b_b.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+      }
+
+      .box {
+        margin-top: 6em;
+        color: #fff;
+        text-align: center;
+      }
+
+      .box h1 {
+        font-size: 3em;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+        color: #fff;
+      }
+
+      .footer a {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="box">
+          <h1>Welcome to Grading.</h1>
+          <a href="{% provider_login_url 'google' %}" class="pure-button pure-button-primary">Login with Google</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      Made with &hearts; by <a href="http://randallma.com">Randall Ma</a>. <a href="https://github.com/randallm/grading">Open source</a>. Background by <a href="https://www.flickr.com/photos/profilerehab/6956509317">Andrew Taylor</a>.
+    </div>
+  </body>
+</html>

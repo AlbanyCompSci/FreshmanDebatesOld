@@ -1,0 +1,59 @@
+{% extends "debates/base.html" %}
+
+{% block content %}
+<div id="MainBody">
+
+    <div id="Debate1" class="Button">
+        <h1>Debate 1</h1>
+        <h2>Description of debate with time/date and topic.</h2>
+        <br>
+    </div>
+    <div id="Debate2" class="Button">
+        <h1>Debate 2</h1>
+        <h2>Description of debate with time/date and topic.</h2>
+        <br>
+    </div>
+    <div id="Debate3" class="Button">
+        <h1>Debate 3</h1>
+        <h2>Description of debate with time/date and topic.</h2>
+        <br>
+    </div>
+    <br>
+    <br>
+    <br>
+
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+    var something = document.getElementById('Debate1');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('judge','_self',false)
+    };
+
+    var something = document.getElementById('Debate2');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('judge','_self',false)
+    };
+
+    var something = document.getElementById('Debate3');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('judge','_self',false)
+    };
+
+    var something = document.getElementById('LogIn');
+
+    something.style.cursor = 'pointer';
+    something.onclick = function() {
+        window.open ('judge','_self',false)
+    };
+</script>
+{% endblock %}
